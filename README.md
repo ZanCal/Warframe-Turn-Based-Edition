@@ -1,5 +1,5 @@
 # Warframe-Turn-Based-Edition
-A reimagining of warframe as a turn based text game
+A reimagining of warframe as a turn based text game, created using Visual Studio in C++
 
 This is going to include the original 8 warframes and a handful of enemies from the 3 main factions to start with
 
