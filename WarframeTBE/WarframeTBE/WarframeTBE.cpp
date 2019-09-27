@@ -40,6 +40,7 @@ using namespace std;
 			Passive
 				Adjustment for new context
 				Interaction 
+				Perhaps just leave passives 'till later?
 
 			Other
 
@@ -73,10 +74,13 @@ protected:
 	string abilityType; 
 	int energyCost;
 	int energyCostTurn;
+	//besides EV, how is energy going to be generated? Passive regen?
 	
 public:
+	Ability() {}
 	Ability(string name) {
 		abilityName = name;
+		abilityType = "passive";
 	}
 	Ability(string name, int cost) {
 		abilityName = name;
@@ -87,11 +91,18 @@ public:
 		energyCost = cost;
 		energyCostTurn = turnCost;
 	}
-
-	Ability() {}
-
+	//having a bunch of getInfo() functions doesn't feel right, but i also don't want everything in my class to be public
+	string getName() {
+		return abilityName;
+	}
+	int getCost() {
+		return energyCost;
+	}
+	int getTurnCost() {
+		return energyCostTurn;
+	}
 	void cast() {
-	
+		//should it be better to have the frame have a cast(ability) function than having the cast funciton be part of the ability?
 	}
 	
 };
@@ -103,45 +114,53 @@ protected:
 	int damageStr;
 	bool singleTarget;
 public:
-	//create a constructor that takes an instance of Ability as argument
-	damageAbility(string name, bool sinTarg):Ability(){
-		abilityName = name;
-		singleTarget = sinTarg;
-		abilityType = "dmg";
-	}
-
 	damageAbility(Ability ability) {
-		
+		abilityName = ability.getName();
+		energyCost = ability.getCost();
+		energyCostTurn = ability.getTurnCost();
+		abilityType = "dmg";
 	}
 
 
 };
 class CCAbility : public Ability {
+protected:
 public:
-	CCAbility(string name) :Ability() {
-		abilityName = name;
+	CCAbility(Ability ability) {
+		abilityName = ability.getName();
+		energyCost = ability.getCost();
+		energyCostTurn = ability.getTurnCost();
 		abilityType = "CC";
 	}
 };
 class BuffAbility : public Ability {
+protected:
 public:
-	BuffAbility(string name) :Ability() {
-		abilityName = name;
-		abilityType = "buff";
+	BuffAbility(Ability ability) {
+		abilityName = ability.getName();
+		energyCost = ability.getCost();
+		energyCostTurn = ability.getTurnCost();
+		abilityType = "Buff";
 	}
 };
 class DebuffAbility : public Ability {
+protected:
 public:
-	DebuffAbility(string name) :Ability() {
-		abilityName = name;
-		abilityType = "debuff";
+	DebuffAbility(Ability ability) {
+		abilityName = ability.getName();
+		energyCost = ability.getCost();
+		energyCostTurn = ability.getTurnCost();
+		abilityType = "Debuff";
 	}
 };
 class OtherAbility : public Ability {
+protected:
 public:
-	OtherAbility(string name) :Ability() {
-		abilityName = name;
-		abilityType = "other";
+	OtherAbility(Ability ability) {
+		abilityName = ability.getName();
+		energyCost = ability.getCost();
+		energyCostTurn = ability.getTurnCost();
+		abilityType = "Other";
 	}
 };
 
@@ -192,7 +211,34 @@ public:
 		energyMax = frameEnergyMax[frameID];
 		armor = frameArmor[frameID];
 		sprintSpeed	 = frameSprintSpeed[frameID];
-
+	}
+	//once again, this doesn't feel too right. Maybe i'm just rusty?
+	string getName() {
+		return Name;
+	}
+	int getMaxHealth() {
+		return healthMax;
+	}
+	string getHealthType() {
+		return healthType;
+	}
+	int getMaxShield() {
+		return shieldMax;
+	}
+	string getShieldType() {
+		return shieldType;
+	}
+	int getEnergyMax(){
+		return energyMax;
+	}
+	int getArmor() {
+		return armor;
+	}
+	string getArmorType() {
+		return armorType;
+	}
+	float getSpeed() {
+		return sprintSpeed;
 	}
 };
 
@@ -209,9 +255,16 @@ public:
 };
 
 int main(){
-	Ability test =  damageAbility("test", false);
+	Ability test =  Ability("test");
+
+	damageAbility test2 = damageAbility(test);
 	
-	test.cast();
+	cout << test2.getName() << endl;
+
+	Frame testF = Frame(0);
+
+	cout << testF.getName() << endl;
+
 	cout << "Welcome to Warframe: Turn Based Edition" << endl;
 
     return 0;

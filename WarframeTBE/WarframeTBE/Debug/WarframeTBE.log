@@ -1,3 +1,5 @@
 ﻿  WarframeTBE.cpp
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(173): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(173): warning C4305: 'initializing': truncation from 'double' to 'float'
   WarframeTBE.vcxproj -> C:\Users\johnn_000\Desktop\Uni\stuff\Warframe-Turn-Based-Edition\WarframeTBE\Debug\WarframeTBE.exe
   WarframeTBE.vcxproj -> C:\Users\johnn_000\Desktop\Uni\stuff\Warframe-Turn-Based-Edition\WarframeTBE\Debug\WarframeTBE.pdb (Partial PDB)
