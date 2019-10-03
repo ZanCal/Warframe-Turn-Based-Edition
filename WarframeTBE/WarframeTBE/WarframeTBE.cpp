@@ -7,12 +7,22 @@
 using namespace std;
 
 
-//for today
+//new day, new things to do
 /*
-	unique frame creation is working
+	here's what I want to get done today
+		Main "menu"
+			selecting which frames to use
+			quit the game
+		
 
-	frames can now take damage
 
+	here's what I've gotten done today
+		fixed a bug with my switch in the frame constructor
+		found a bug with my ability type subclasses
+		fixed the bug with my ability type subclass that needed a fair bit of restructuring 
+		Damage Abilities 
+			Damage Type(s)
+			Damage Strength
 */
 
 //TODO
@@ -24,49 +34,37 @@ using namespace std;
 
 	Gameplay
 		Targeting System
+		Turn System
 
 	Frames
-
 		Bleedout state / Death / Rez tokens
-
 		Abilities
 			All 
 				Functionality 
 				Targeting (if an ability targets all enemies, have it target each one instead of a seperate general target all ability funcition)
 				Channel or Cast
-
 			Damage
 				Damage Type
 				Special Effects
-			
 			CC
 				Nature of CC
-			
 			Buff
 				Nature of Buff
-
 			Debuff
 				Nature of Debuff
-
 			Passive
 				Adjustment for new context
 				Interaction 
 				Perhaps just leave passives 'till later?
-
 			Other
 
 	Enemies
-
 		Target Prioritization
-
 		Death
-
 		Abilities
-
 		Attacking
 
 	Other
-		Armor DR (done for enemies, not for frames)
 		Shield Regen
 		Levels, XP, and scailing (save for later)
 		Damage Types
@@ -75,8 +73,6 @@ using namespace std;
 
 	Extras
 		Frame Stats Page
-
-
 */
 
 void calcDR(string damageType, string * enemyInfo) {
@@ -127,7 +123,9 @@ public:
 	int getTurnCost() {
 		return energyCostTurn;
 	}
-	
+	string getType() {
+		return abilityType;
+	}
 	void cast() {
 		cout << "Ability " << abilityName << " was cast" << endl;
 	}
@@ -140,13 +138,14 @@ protected:
 	//int damageStr[4];  //Leveled Abilities will be done later
 	int damageStr;
 public:
+	damageAbility() {}
 	damageAbility(Ability ability) {
 		abilityName = ability.getName();
 		energyCost = ability.getCost();
 		energyCostTurn = ability.getTurnCost();
 		abilityType = "dmg";
 	}
-	void setAbilityInfo(int damage, string type) {
+	void setAbilityInfo(string type, int damage) {
 		damageStr = damage;
 		damageType = type;
 	}
@@ -156,6 +155,7 @@ public:
 class CCAbility : public Ability {
 protected:
 public:
+	CCAbility() {}
 	CCAbility(Ability ability) {
 		abilityName = ability.getName();
 		energyCost = ability.getCost();
@@ -166,6 +166,7 @@ public:
 class buffAbility : public Ability {
 protected:
 public:
+	buffAbility() {}
 	buffAbility(Ability ability) {
 		abilityName = ability.getName();
 		energyCost = ability.getCost();
@@ -176,6 +177,7 @@ public:
 class debuffAbility : public Ability {
 protected:
 public:
+	debuffAbility() {}
 	debuffAbility(Ability ability) {
 		abilityName = ability.getName();
 		energyCost = ability.getCost();
@@ -186,6 +188,7 @@ public:
 class otherAbility : public Ability {
 protected:
 public:
+	otherAbility() {}
 	otherAbility(Ability ability) {
 		abilityName = ability.getName();
 		energyCost = ability.getCost();
@@ -237,11 +240,37 @@ protected:
 	float sprintSpeed;
 
 	passiveAbility passive;
-	Ability ability1;
-	Ability ability2;
-	Ability ability3;
-	Ability ability4;
+
+	//okay so i have an idea to fix this bug but oh my god do i hate it
+	//example of first fit versus best fit? 
+
+	Ability abilities[4];
+
+	damageAbility dmgAbility1;
+	damageAbility dmgAbility2;
+	damageAbility dmgAbility3;
+	damageAbility dmgAbility4;
 	
+	CCAbility CCAbility1;
+	CCAbility CCAbility2;
+	CCAbility CCAbility3;
+	CCAbility CCAbility4;
+
+	buffAbility buffAbility1;
+	buffAbility buffAbility2;
+	buffAbility buffAbility3;
+	buffAbility buffAbility4;
+
+	debuffAbility debuffAbility1;
+	debuffAbility debuffAbility2;
+	debuffAbility debuffAbility3;
+	debuffAbility debuffAbility4;
+
+	otherAbility otherAbility1;
+	otherAbility otherAbility2;
+	otherAbility otherAbility3;
+	otherAbility otherAbility4;
+
 
 public:
 	Frame(int frameID) {
@@ -259,49 +288,97 @@ public:
 		//I still don't like this, but it seems a lot better than the if statements i had before
 		//I wonder if there's still a better way to do it
 		switch (frameID) {
-		case 0: 
-			ability1 = damageAbility(frameAbility1[frameID]);
-			ability2 = buffAbility(frameAbility2[frameID]);
-			ability3 = CCAbility(frameAbility3[frameID]);
-			ability4 = damageAbility(frameAbility4[frameID]);
-		case 1:
-			ability1 = damageAbility(frameAbility1[frameID]);
-			ability2 = buffAbility(frameAbility2[frameID]);
-			ability3 = otherAbility(frameAbility3[frameID]);
-			ability4 = damageAbility(frameAbility4[frameID]);
-		case 2:
-			ability1 = damageAbility(frameAbility1[frameID]);
-			ability2 = CCAbility(frameAbility2[frameID]);
-			ability3 = damageAbility(frameAbility3[frameID]);
-			ability4 = damageAbility(frameAbility4[frameID]);
-		case 3:
-			ability1 = CCAbility(frameAbility1[frameID]);
-			ability2 = buffAbility(frameAbility2[frameID]);
-			ability3 = CCAbility(frameAbility3[frameID]);
-			ability4 = debuffAbility(frameAbility4[frameID]);
-		case 4:
-			ability1 = damageAbility(frameAbility1[frameID]);
-			ability2 = debuffAbility(frameAbility2[frameID]);
-			ability3 = otherAbility(frameAbility3[frameID]);
-			ability4 = damageAbility(frameAbility4[frameID]);
-		case 5:
-			ability1 = otherAbility(frameAbility1[frameID]);
-			ability2 = buffAbility(frameAbility2[frameID]);
-			ability3 = buffAbility(frameAbility3[frameID]);
-			ability4 = CCAbility(frameAbility4[frameID]);
-		case 6:
-			ability1 = debuffAbility(frameAbility1[frameID]);
-			ability2 = debuffAbility(frameAbility2[frameID]);
-			ability3 = buffAbility(frameAbility3[frameID]);
-			ability4 = buffAbility(frameAbility4[frameID]);
-		case 7:
-			ability1 = damageAbility(frameAbility1[frameID]);
-			ability2 = buffAbility(frameAbility2[frameID]);
-			ability3 = otherAbility(frameAbility3[frameID]);
-			ability4 = CCAbility(frameAbility4[frameID]);
+		case 0: //ash
+			dmgAbility1 = damageAbility(frameAbility1[frameID]);
+			abilities[0] = dmgAbility1;
+			dmgAbility1.setAbilityInfo("slash", 200);
+			buffAbility2 = buffAbility(frameAbility2[frameID]);
+			abilities[1] = buffAbility2;
+			CCAbility3 = CCAbility(frameAbility3[frameID]);
+			abilities[2] = CCAbility3;
+			dmgAbility4 = damageAbility(frameAbility4[frameID]);
+			abilities[3] = dmgAbility4;
+			dmgAbility4.setAbilityInfo("true", 2000);
+			break;
+		case 1: //ember
+			dmgAbility1 = damageAbility(frameAbility1[frameID]);
+			abilities[0] = dmgAbility1;
+			dmgAbility1.setAbilityInfo("heat", 400);
+			buffAbility2 = buffAbility(frameAbility2[frameID]);
+			abilities[1] = buffAbility2;
+			otherAbility3 = otherAbility(frameAbility3[frameID]);
+			abilities[2] = otherAbility3;
+			dmgAbility4 = damageAbility(frameAbility4[frameID]);
+			abilities[3] = dmgAbility4;
+			dmgAbility4.setAbilityInfo("heat", 400);
+			break;
+		case 2: //excal
+			dmgAbility1 = damageAbility(frameAbility1[frameID]);
+			abilities[0] = dmgAbility1;
+			dmgAbility1.setAbilityInfo("IPS", 250);
+			CCAbility2 = CCAbility(frameAbility2[frameID]);
+			abilities[1] = CCAbility2;
+			dmgAbility3 = damageAbility(frameAbility3[frameID]);
+			abilities[2] = dmgAbility3;
+			dmgAbility3.setAbilityInfo("IPS", 1000);
+			dmgAbility4 = damageAbility(frameAbility4[frameID]);
+			abilities[3] = dmgAbility4;
+			dmgAbility4.setAbilityInfo("IPS",250);
+			break;
+		case 3: //loki
+			CCAbility1 = CCAbility(frameAbility1[frameID]);
+			abilities[0] = CCAbility1;
+			buffAbility2 = buffAbility(frameAbility2[frameID]);
+			abilities[1] = buffAbility2;
+			CCAbility3 = CCAbility(frameAbility3[frameID]);
+			abilities[2] = CCAbility3;
+			debuffAbility4 = debuffAbility(frameAbility4[frameID]);
+			abilities[3] = debuffAbility4;
+			break;
+		case 4: //mag
+			dmgAbility1 = damageAbility(frameAbility1[frameID]);
+			abilities[0] = dmgAbility1;
+			dmgAbility1.setAbilityInfo("magnetic", 300);
+			debuffAbility2 = debuffAbility(frameAbility2[frameID]);
+			abilities[1] = debuffAbility2;
+			otherAbility3 = otherAbility(frameAbility3[frameID]);
+			abilities[2] = otherAbility3;
+			dmgAbility4 = damageAbility(frameAbility4[frameID]);
+			abilities[3] = dmgAbility4;
+			dmgAbility4.setAbilityInfo("magnetic", 1500);
+			break;
+		case 5: //rhino
+			otherAbility1 = otherAbility(frameAbility1[frameID]);
+			abilities[0] = otherAbility1;
+			buffAbility2 = buffAbility(frameAbility2[frameID]);
+			abilities[1] = buffAbility2;
+			buffAbility3 = buffAbility(frameAbility3[frameID]);
+			abilities[2] = buffAbility3;
+			CCAbility4 = CCAbility(frameAbility4[frameID]);
+			abilities[3] = CCAbility4;
+			break;
+		case 6: //trin
+			debuffAbility1 = debuffAbility(frameAbility1[frameID]);
+			abilities[0] = debuffAbility1;
+			debuffAbility2 = debuffAbility(frameAbility2[frameID]);
+			abilities[1] = debuffAbility2;
+			buffAbility3 = buffAbility(frameAbility3[frameID]);
+			abilities[2] = buffAbility3;
+			buffAbility4 = buffAbility(frameAbility4[frameID]);
+			abilities[3] = buffAbility4;
+			break;
+		case 7: //volt
+			dmgAbility1 = damageAbility(frameAbility1[frameID]);
+			abilities[0] = dmgAbility1;
+			dmgAbility1.setAbilityInfo("electric", 200);
+			buffAbility2 = buffAbility(frameAbility2[frameID]);
+			abilities[1] = buffAbility2;
+			otherAbility3 = otherAbility(frameAbility3[frameID]);
+			abilities[2] = otherAbility3;
+			CCAbility4 = CCAbility(frameAbility4[frameID]);
+			abilities[3] = CCAbility4;
+			break;
 		}
-		
-		
 
 	}
 
@@ -336,18 +413,11 @@ public:
 		return sprintSpeed;
 	}
 	//I wonder if i can do a getAbility(ability number) thing instead of 4 get fuctions for each ability
-	Ability getAbility1() {
-		return ability1;
+	//turns out i can, but only because of how i decided to fix a bug (which isn't a way i'm satisfied with)
+	Ability getAbility(int which) {
+		return abilities[which];
 	}
-	Ability getAbility2() {
-		return ability2;
-	}
-	Ability getAbility3() {
-		return ability3;
-	}
-	Ability getAbility4() {
-		return ability4;
-	}
+	
 
 
 	//ability functions 
@@ -359,27 +429,27 @@ public:
 			return false;
 		}
 	}
-	void cast(Ability ability) {
-		if (drainEnergy(ability.getCost())) {
-			ability.cast();
+	void cast(int which) {
+		if (drainEnergy(getAbility(which).getCost())) {
+			getAbility(which).cast();
 		} else {
 			//not enough energy error message	
 			cout << "Not enough energy" << endl;
 		}
 	}
 
+
+
 	void getHit(float damage) {
 		//holdup 
 		//armor DR doesn't apply to shields 
 		//whoops
-		
 		if (shieldCur > 0) {
 			shieldCur -= damage;
 			if (shieldCur < 0) {
 				shieldCur = 0;
 			}
-		}
-		else {
+		} else {
 			float DR = (300 / (armor + 300));
 			damage *= DR;
 			healthCur -= damage;
@@ -467,17 +537,6 @@ class enemyCell {};
 
 int main(){
 
-	
-	for (int i = 0; i < 8; i++) {
-		Frame testF = Frame(i);
-		cout << testF.getName() << endl;
-		testF.cast(testF.getAbility2());
-		testF.getHit(50);
-		testF.getHit(50);
-		testF.getHit(50);
-
-	}
-	
 
 	cout << "Welcome to Warframe: Turn Based Edition" << endl;
 

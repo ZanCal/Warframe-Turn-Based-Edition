@@ -1,10 +1,10 @@
 ﻿  WarframeTBE.cpp
-c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(211): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
-c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(211): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(326): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(373): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(381): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(420): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(428): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(217): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(217): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(399): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(440): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(447): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(486): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(494): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
   WarframeTBE.vcxproj -> C:\Users\johnn_000\Desktop\Uni\stuff\Warframe-Turn-Based-Edition\WarframeTBE\Debug\WarframeTBE.exe
   WarframeTBE.vcxproj -> C:\Users\johnn_000\Desktop\Uni\stuff\Warframe-Turn-Based-Edition\WarframeTBE\Debug\WarframeTBE.pdb (Partial PDB)
