@@ -1,28 +1,24 @@
 // WarframeTBE.cpp : Defines the entry point for the console application.
 // 
 
-#include "stdafx.h"
 #include<iostream>
 #include<string>
+#include "stdafx.h"
+#include "FrameT.h"
+#include "AbilityT.h"
 using namespace std;
 
 
 //new day, new things to do
 /*
+	There is now a timeline! Have something user interactive by thanksgiving (5 working days left)
 	here's what I want to get done today
-		Main "menu"
-			selecting which frames to use
-			quit the game
-		
-
-
+		frame status printout 
+		damage abilities able to target single enemy
+			I think that this part may require splitting my main classes into seperate files
+			lol idk how to do that
 	here's what I've gotten done today
-		fixed a bug with my switch in the frame constructor
-		found a bug with my ability type subclasses
-		fixed the bug with my ability type subclass that needed a fair bit of restructuring 
-		Damage Abilities 
-			Damage Type(s)
-			Damage Strength
+		
 */
 
 //TODO
@@ -43,8 +39,8 @@ using namespace std;
 				Functionality 
 				Targeting (if an ability targets all enemies, have it target each one instead of a seperate general target all ability funcition)
 				Channel or Cast
+				Turn Interaction
 			Damage
-				Damage Type
 				Special Effects
 			CC
 				Nature of CC
@@ -57,6 +53,7 @@ using namespace std;
 				Interaction 
 				Perhaps just leave passives 'till later?
 			Other
+		Status Printout
 
 	Enemies
 		Target Prioritization
@@ -68,6 +65,7 @@ using namespace std;
 		Shield Regen
 		Levels, XP, and scailing (save for later)
 		Damage Types
+			Need to know how multiple dmg + h/s/a types interact in game first
 		Game Balance
 		Split classes into other files to keep organized 
 
@@ -75,7 +73,7 @@ using namespace std;
 		Frame Stats Page
 */
 
-void calcDR(string damageType, string * enemyInfo) {
+void calcDR(string * damageType, string * targetInfo) {
 	//how to use the pointer?
 	
 	//Object health type is always a multiplier of 1
@@ -149,7 +147,7 @@ public:
 		damageStr = damage;
 		damageType = type;
 	}
-
+	
 
 };
 class CCAbility : public Ability {
@@ -439,7 +437,6 @@ public:
 	}
 
 
-
 	void getHit(float damage) {
 		//holdup 
 		//armor DR doesn't apply to shields 
@@ -537,6 +534,11 @@ class enemyCell {};
 
 int main(){
 
+	Enemy testE = Enemy(true);
+
+	Frame testF = Frame(1);
+
+	
 
 	cout << "Welcome to Warframe: Turn Based Edition" << endl;
 
