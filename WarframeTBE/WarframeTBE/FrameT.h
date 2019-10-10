@@ -11,14 +11,16 @@ protected:
 	string healthType = "Flesh";
 	int shieldMax;
 	int shieldCur;
+	int shieldRegen = 15 + shieldMax * 0.05;
 	string shieldType = "Shield";
+	bool shieldIsRegenerating;
 	int energyMax;
 	int energyCur;
 	float armor;
 	string armorType = "Ferrite Armor";
 	float sprintSpeed;
 
-	passiveAbility passive;
+	passiveAbilityT passive;
 
 	//okay so i have an idea to fix this bug but oh my god do i hate it
 	//example of first fit versus best fit? 
@@ -26,29 +28,48 @@ protected:
 	AbilityT abilities[4];
 
 	damageAbilityT dmgAbility1;
-	damageAbility dmgAbility2;
-	damageAbility dmgAbility3;
-	damageAbility dmgAbility4;
+	damageAbilityT dmgAbility2;
+	damageAbilityT dmgAbility3;
+	damageAbilityT dmgAbility4;
 
-	CCAbility CCAbility1;
-	CCAbility CCAbility2;
-	CCAbility CCAbility3;
-	CCAbility CCAbility4;
+	CCAbilityT CCAbility1;
+	CCAbilityT CCAbility2;
+	CCAbilityT CCAbility3;
+	CCAbilityT CCAbility4;
 
-	buffAbility buffAbility1;
-	buffAbility buffAbility2;
-	buffAbility buffAbility3;
-	buffAbility buffAbility4;
+	buffAbilityT buffAbility1;
+	buffAbilityT buffAbility2;
+	buffAbilityT buffAbility3;
+	buffAbilityT buffAbility4;
 
-	debuffAbility debuffAbility1;
-	debuffAbility debuffAbility2;
-	debuffAbility debuffAbility3;
-	debuffAbility debuffAbility4;
+	debuffAbilityT debuffAbility1;
+	debuffAbilityT debuffAbility2;
+	debuffAbilityT debuffAbility3;
+	debuffAbilityT debuffAbility4;
 
-	otherAbility otherAbility1;
-	otherAbility otherAbility2;
-	otherAbility otherAbility3;
-	otherAbility otherAbility4;
+	otherAbilityT otherAbility1;
+	otherAbilityT otherAbility2;
+	otherAbilityT otherAbility3;
+	otherAbilityT otherAbility4;
 public:
+	FrameT(int frameID);
+	string getName();
+	int getMaxHealth();
+	string getHealthType();
+	int getMaxShield();
+	string getShieldType();
+	int getMaxEnergy();
+	int getArmor();
+	string getArmorType();
+	float getSpeed();
+	AbilityT getAbility(int which);
+
+
+	bool drainEnergy(int cost);
+	void cast(int which);
+	void getHit(float damage);
+
+	void printStatus();
+
 
 };

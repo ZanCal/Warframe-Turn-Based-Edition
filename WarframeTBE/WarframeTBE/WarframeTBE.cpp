@@ -5,19 +5,20 @@
 #include<string>
 #include "stdafx.h"
 #include "FrameT.h"
-#include "AbilityT.h"
+#include "EnemyT.h"
 using namespace std;
 
 
 //new day, new things to do
 /*
-	There is now a timeline! Have something user interactive by thanksgiving (5 working days left)
+	There is now a timeline! Have something user interactive by thanksgiving (2 working days left)
+	lol no way that timeline is being reached
 	here's what I want to get done today
-		frame status printout 
 		damage abilities able to target single enemy
-			I think that this part may require splitting my main classes into seperate files
-			lol idk how to do that
+			
 	here's what I've gotten done today
+		I think i got classes in seperate files working right. I THINK
+		frame status printout (currently prints a string, i want it to return a string)
 		
 */
 
@@ -86,7 +87,7 @@ void calcDR(string * damageType, string * targetInfo) {
 
 }
 
-
+/*
 class Ability {
 protected:
 	string abilityName;
@@ -125,7 +126,7 @@ public:
 		return abilityType;
 	}
 	void cast() {
-		cout << "Ability " << abilityName << " was cast" << endl;
+		//cout << "Ability " << abilityName << " was cast" << endl;
 	}
 	
 };
@@ -207,6 +208,7 @@ public:
 };
 
 //frame info
+
 string frameName[] = { "Ash","Ember","Excalibur","Loki","Mag","Rhino","Trinity","Volt" };
 int frameHealthMax[] = { 150,100,100,75,75,100,100,100 };
 int frameShieldMax[] = { 100,100,100,75,150,150,100,150 };
@@ -451,10 +453,11 @@ public:
 			damage *= DR;
 			healthCur -= damage;
 		}
-		cout << "Frame " << Name << " has " << shieldCur << " shields and " << healthCur <<  " health" << endl;
+		//cout << "Frame " << Name << " has " << shieldCur << " shields and " << healthCur <<  " health" << endl;
 	}
 
 };
+*/
 
 class Enemy {
 protected:
@@ -517,28 +520,19 @@ public:
 	}
 };
 
-class cell {
-protected:
-	Frame frame1;
-	Frame frame2;
-	Frame frame3;
-	Frame frame4;
 
-
-public:
-
-
-};
-
-class enemyCell {};
 
 int main(){
-
-	Enemy testE = Enemy(true);
-
-	Frame testF = Frame(1);
-
-	
+	FrameT testF = FrameT(0);
+	testF.printStatus();
+	testF.cast(0);
+	cout << testF.getAbility(0).getType() << endl;
+	//how to get the distinct subclass cast functions called
+	//only way i can think of is having the ability cast function call
+	//subclass cast functions 
+	testF.printStatus();
+	EnemyT testE = EnemyT(true);
+	cout << testE.getName() << endl;
 
 	cout << "Welcome to Warframe: Turn Based Edition" << endl;
 

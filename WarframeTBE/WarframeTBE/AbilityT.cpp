@@ -3,125 +3,126 @@
 #include "AbilityT.h"
 using namespace std;
 
-class AbilityT {
-protected:
-	string abilityName;
-	//int abilityLevel; //Leveled abilities will be done later
-	string abilityType;
-	int energyCost;
-	int energyCostTurn;
-	//besides EV, how is energy going to be generated? Passive regen?
 
-public:
-	AbilityT() {}
-	AbilityT(string name) {
-		abilityName = name;
-		abilityType = "passive";
-	}
-	AbilityT(string name, int cost) {
-		abilityName = name;
-		energyCost = cost;
-	}
-	AbilityT(string name, int cost, int turnCost) {
-		abilityName = name;
-		energyCost = cost;
-		energyCostTurn = turnCost;
-	}
-	//having a bunch of getInfo() functions doesn't feel right, but i also don't want everything in my class to be public
-	string getName() {
-		return abilityName;
-	}
-	int getCost() {
-		return energyCost;
-	}
-	int getTurnCost() {
-		return energyCostTurn;
-	}
-	string getType() {
-		return abilityType;
-	}
-	void cast() {
-		cout << "Ability " << abilityName << " was cast" << endl;
-	}
+AbilityT::AbilityT() {}
 
-};
-
-class damageAbilityT : public AbilityT {
-protected:
-	string damageType;
-	//int damageStr[4];  //Leveled Abilities will be done later
-	int damageStr;
-public:
-	damageAbilityT() {}
-	damageAbilityT(AbilityT ability) {
-		abilityName = ability.getName();
-		energyCost = ability.getCost();
-		energyCostTurn = ability.getTurnCost();
-		abilityType = "dmg";
-	}
-	void setAbilityInfo(string type, int damage) {
-		damageStr = damage;
-		damageType = type;
-	}
-
-
-};
-class CCAbility : public Ability {
-protected:
-public:
-	CCAbility() {}
-	CCAbility(Ability ability) {
-		abilityName = ability.getName();
-		energyCost = ability.getCost();
-		energyCostTurn = ability.getTurnCost();
-		abilityType = "CC";
-	}
-};
-class buffAbility : public Ability {
-protected:
-public:
-	buffAbility() {}
-	buffAbility(Ability ability) {
-		abilityName = ability.getName();
-		energyCost = ability.getCost();
-		energyCostTurn = ability.getTurnCost();
-		abilityType = "Buff";
-	}
-};
-class debuffAbility : public Ability {
-protected:
-public:
-	debuffAbility() {}
-	debuffAbility(Ability ability) {
-		abilityName = ability.getName();
-		energyCost = ability.getCost();
-		energyCostTurn = ability.getTurnCost();
-		abilityType = "Debuff";
-	}
-};
-class otherAbility : public Ability {
-protected:
-public:
-	otherAbility() {}
-	otherAbility(Ability ability) {
-		abilityName = ability.getName();
-		energyCost = ability.getCost();
-		energyCostTurn = ability.getTurnCost();
-		abilityType = "Other";
-	}
-};
-class passiveAbility : public Ability {
-	//lol idk how to do this
-protected:
-public:
-	passiveAbility(Ability ability) {
-		abilityName = ability.getName();
-		abilityType = "Passive";
-	}
-	passiveAbility() {}
-
-};
-
-int main() {
-
+AbilityT::AbilityT(string name) {
+	abilityName = name;
+	abilityType = "passive";
 }
+
+AbilityT::AbilityT(string name, int cost) {
+	abilityName = name;
+	energyCost = cost;
+}
+
+AbilityT::AbilityT(string name, int cost, int turnCost) {
+	abilityName = name;
+	energyCost = cost;
+	energyCostTurn = turnCost;
+}
+
+void AbilityT::cast() {
+	cout << abilityName << " was cast" << endl;
+	cout << "This is the cast function for the generic ability superclass" << endl;
+	cout << "This messages should not appear" << endl;
+}
+
+damageAbilityT::damageAbilityT() {}
+
+damageAbilityT::damageAbilityT(AbilityT ability) {
+	abilityName = ability.getName();
+	energyCost = ability.getCost();
+	energyCostTurn = ability.getTurnCost();
+	abilityType = "dmg";
+}
+
+void damageAbilityT::setAbilityInfo(string type, int damage) {
+	damageType = type;
+	damageStr = damage;
+}
+
+void damageAbilityT::cast() {
+	cout << abilityName << " was cast" << endl;
+	cout << "this is the cast function for the damage ability ability subclass" << endl;
+}
+
+CCAbilityT::CCAbilityT() {}
+
+CCAbilityT::CCAbilityT(AbilityT ability) {
+	abilityName = ability.getName();
+	energyCost = ability.getCost();
+	energyCostTurn = ability.getTurnCost();
+	abilityType = "CC";
+}
+
+void CCAbilityT::cast() {
+	cout << abilityName << " was cast" << endl;
+	cout << "this is the cast function for the CC ability ability subclass" << endl;
+}
+
+buffAbilityT::buffAbilityT() {}
+
+buffAbilityT::buffAbilityT(AbilityT ability) {
+	abilityName = ability.getName();
+	energyCost = ability.getCost();
+	energyCostTurn = ability.getTurnCost();
+	abilityType = "buff";
+}
+
+void buffAbilityT::cast() {
+	cout << abilityName << " was cast" << endl;
+	cout << "this is the cast function for the buff ability ability subclass" << endl;
+}
+
+debuffAbilityT::debuffAbilityT() {}
+
+debuffAbilityT::debuffAbilityT(AbilityT ability) {
+	abilityName = ability.getName();
+	energyCost = ability.getCost();
+	energyCostTurn = ability.getTurnCost();
+	abilityType = "debuff";
+}
+
+void debuffAbilityT::cast() {
+	cout << abilityName << " was cast" << endl;
+	cout << "this is the cast function for the debuff ability ability subclass" << endl;
+}
+
+otherAbilityT::otherAbilityT() {}
+
+otherAbilityT::otherAbilityT(AbilityT ability) {
+	abilityName = ability.getName();
+	energyCost = ability.getCost();
+	energyCostTurn = ability.getTurnCost();
+	abilityType = "other";
+}
+
+void otherAbilityT::cast() {
+	cout << abilityName << " was cast" << endl;
+	cout << "this is the cast function for the other ability ability subclass" << endl;
+}
+
+passiveAbilityT::passiveAbilityT() {}
+
+passiveAbilityT::passiveAbilityT(AbilityT ability) {
+	abilityName = ability.getName();
+	abilityType = "passive";
+}
+
+string AbilityT::getName() {
+	return abilityName;
+}
+
+int AbilityT::getCost() {
+	return energyCost;
+}
+
+int AbilityT::getTurnCost() {
+	return energyCostTurn;
+}
+
+string AbilityT::getType() {
+	return abilityType;
+}
+

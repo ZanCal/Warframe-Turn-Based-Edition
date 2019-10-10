@@ -1,10 +1,17 @@
 ﻿  WarframeTBE.cpp
-c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(217): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
-c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(217): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(399): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(440): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(447): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(486): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(494): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-  WarframeTBE.vcxproj -> C:\Users\johnn_000\Desktop\Uni\stuff\Warframe-Turn-Based-Edition\WarframeTBE\Debug\WarframeTBE.exe
-  WarframeTBE.vcxproj -> C:\Users\johnn_000\Desktop\Uni\stuff\Warframe-Turn-Based-Edition\WarframeTBE\Debug\WarframeTBE.pdb (Partial PDB)
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\framet.h(14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(493): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\warframetbe.cpp(501): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+  AbilityT.cpp
+  Generating Code...
+  Compiling...
+  FrameT.cpp
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\framet.h(14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\framet.cpp(11): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\framet.cpp(11): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\framet.cpp(148): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\framet.cpp(185): error C2039: 'cast': is not a member of 'AbilityT'
+  c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\abilityt.h(4): note: see declaration of 'AbilityT'
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\framet.cpp(194): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\johnn_000\desktop\uni\stuff\warframe-turn-based-edition\warframetbe\warframetbe\framet.cpp(202): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
