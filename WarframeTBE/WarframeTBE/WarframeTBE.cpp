@@ -9,16 +9,20 @@
 using namespace std;
 
 
-//new day, new things to do
 /*
-	There is now a timeline! Have something user interactive by thanksgiving (2 working days left)
-	lol no way that timeline is being reached
-	here's what I want to get done today
-		damage abilities able to target single enemy
-			
-	here's what I've gotten done today
-		I think i got classes in seperate files working right. I THINK
-		frame status printout (currently prints a string, i want it to return a string)
+	Here's what i want to get done for the next push
+		have ability subclasses call their unique cast functions
+			done
+		get a few more enemies besides the test butcher 
+			enemy info arrays 
+				done for grineer 
+			enemy constructors 
+				non leveled grineer done 
+		get the basics of a main menu working 
+			figure out user input 
+				done
+			select a frame and get stats + ability names
+				done
 		
 */
 
@@ -69,23 +73,11 @@ using namespace std;
 			Need to know how multiple dmg + h/s/a types interact in game first
 		Game Balance
 		Split classes into other files to keep organized 
+			done?
 
 	Extras
 		Frame Stats Page
 */
-
-void calcDR(string * damageType, string * targetInfo) {
-	//how to use the pointer?
-	
-	//Object health type is always a multiplier of 1
-
-	//true damage type is a multiplier of 1 for all except armor, which is bypassed
-
-	//maybe array this bitch?
-
-	//how do health multipliers interact with armor multipliers 
-
-}
 
 /*
 class Ability {
@@ -459,6 +451,7 @@ public:
 };
 */
 
+/*
 class Enemy {
 protected:
 	string Name;
@@ -519,20 +512,31 @@ public:
 		return DRInfo;
 	}
 };
+*/
 
+
+void calcDR(string * damageType, string * targetInfo) {
+	//how to use the pointer?
+
+	//Object health type is always a multiplier of 1
+
+	//true damage type is a multiplier of 1 for all except armor, which is bypassed
+
+	//maybe array this bitch?
+
+	//how do health multipliers interact with armor multipliers 
+
+	//should this function even be in this file?
+}
 
 
 int main(){
-	FrameT testF = FrameT(0);
-	testF.printStatus();
-	testF.cast(0);
-	cout << testF.getAbility(0).getType() << endl;
-	//how to get the distinct subclass cast functions called
-	//only way i can think of is having the ability cast function call
-	//subclass cast functions 
-	testF.printStatus();
+	cout << "Select a frame (int 0-7)" << endl;
+	int temp = 0;
+	cin >> temp;
+	FrameT testF = FrameT(temp);
+	testF.printInfo();
 	EnemyT testE = EnemyT(true);
-	cout << testE.getName() << endl;
 
 	cout << "Welcome to Warframe: Turn Based Edition" << endl;
 

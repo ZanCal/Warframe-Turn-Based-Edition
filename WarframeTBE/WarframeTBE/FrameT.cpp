@@ -3,6 +3,8 @@
 #include "FrameT.h"
 
 using namespace std;
+
+//frame stats
 string frameName[] = { "Ash","Ember","Excalibur","Loki","Mag","Rhino","Trinity","Volt" };
 int frameHealthMax[] = { 150,100,100,75,75,100,100,100 };
 int frameShieldMax[] = { 100,100,100,75,150,150,100,150 };
@@ -10,6 +12,7 @@ int frameEnergyMax[] = { 100,150,100,150,125,100,150,100 };
 float frameArmor[] = { 65,100,225,65,65,190,15,15 };
 float frameSprintSpeed[] = { 1.15, 1.1, 1, 1.25, 1, 0.95, 1, 1 };
 
+//ability stats
 AbilityT frameAbility1[] = { { "Shruriken", 25 },{ "Fireball",25 },{ "Slash Dash",25 } ,{ "Decoy",25 },{ "Pull",25 },{ "Rhino Charge",25 },{ "Well of Life",25 },{ "Shock",25 } };
 AbilityT frameAbility2[] = { { "Smoke Screen",35 },{ "Accelerant",50 },{ "Radial Blind",50 },{ "Invisibility",50 },{ "Magnitize",50 },{ "Iron Skin",50 },{ "Energy Vampire",50 },{ "Speed",25 } };
 AbilityT frameAbility3[] = { { "Teleport",25 },{ "Fire Blast",75 },{ "Radial Javelin",75 },{ "Switch Teleport",25 },{ "Polarize",75 },{ "Roar",75 },{ "Link",75 },{ "Electric Shield",50, 1 } };
@@ -28,94 +31,94 @@ FrameT::FrameT(int frameID) {
 	sprintSpeed = frameSprintSpeed[frameID];
 	switch (frameID) {
 	case 0: //ash
-		dmgAbility1 = damageAbilityT(frameAbility1[frameID]);
-		abilities[0] = dmgAbility1;
-		dmgAbility1.setAbilityInfo("slash", 200);
-		buffAbility2 = buffAbilityT(frameAbility2[frameID]);
-		abilities[1] = buffAbility2;
-		CCAbility3 = CCAbilityT(frameAbility3[frameID]);
-		abilities[2] = CCAbility3;
-		dmgAbility4 = damageAbilityT(frameAbility4[frameID]);
-		abilities[3] = dmgAbility4;
-		dmgAbility4.setAbilityInfo("true", 2000);
+		dmgAbilities[0] = damageAbilityT(frameAbility1[frameID]);
+		abilities[0] = dmgAbilities[0];
+		dmgAbilities[0].setAbilityInfo("slash", 200);
+		buffAbilities[1] = buffAbilityT(frameAbility2[frameID]);
+		abilities[1] = buffAbilities[1];
+		CCAbilities[2] = CCAbilityT(frameAbility3[frameID]);
+		abilities[2] = CCAbilities[2];
+		dmgAbilities[3] = damageAbilityT(frameAbility4[frameID]);
+		abilities[3] = dmgAbilities[3];
+		dmgAbilities[3].setAbilityInfo("true", 2000);
 		break;
 	case 1: //ember (going to need to update for rework)
-		dmgAbility1 = damageAbilityT(frameAbility1[frameID]);
-		abilities[0] = dmgAbility1;
-		dmgAbility1.setAbilityInfo("heat", 400);
-		buffAbility2 = buffAbilityT(frameAbility2[frameID]);
-		abilities[1] = buffAbility2;
-		otherAbility3 = otherAbilityT(frameAbility3[frameID]);
-		abilities[2] = otherAbility3;
-		dmgAbility4 = damageAbilityT(frameAbility4[frameID]);
-		abilities[3] = dmgAbility4;
-		dmgAbility4.setAbilityInfo("heat", 400);
+		dmgAbilities[0] = damageAbilityT(frameAbility1[frameID]);
+		abilities[0] = dmgAbilities[0];
+		dmgAbilities[0].setAbilityInfo("heat", 400);
+		buffAbilities[1] = buffAbilityT(frameAbility2[frameID]);
+		abilities[1] = buffAbilities[1];
+		otherAbilities[2] = otherAbilityT(frameAbility3[frameID]);
+		abilities[2] = otherAbilities[2];
+		dmgAbilities[3] = damageAbilityT(frameAbility4[frameID]);
+		abilities[3] = dmgAbilities[3];
+		dmgAbilities[3].setAbilityInfo("heat", 400);
 		break;
 	case 2: //excal
-		dmgAbility1 = damageAbilityT(frameAbility1[frameID]);
-		abilities[0] = dmgAbility1;
-		dmgAbility1.setAbilityInfo("IPS", 250);
-		CCAbility2 = CCAbilityT(frameAbility2[frameID]);
-		abilities[1] = CCAbility2;
-		dmgAbility3 = damageAbilityT(frameAbility3[frameID]);
-		abilities[2] = dmgAbility3;
-		dmgAbility3.setAbilityInfo("IPS", 1000);
-		dmgAbility4 = damageAbilityT(frameAbility4[frameID]);
-		abilities[3] = dmgAbility4;
-		dmgAbility4.setAbilityInfo("IPS", 250);
+		dmgAbilities[0] = damageAbilityT(frameAbility1[frameID]);
+		abilities[0] = dmgAbilities[0];
+		dmgAbilities[0].setAbilityInfo("IPS", 250);
+		CCAbilities[1] = CCAbilityT(frameAbility2[frameID]);
+		abilities[1] = CCAbilities[1];
+		dmgAbilities[2] = damageAbilityT(frameAbility3[frameID]);
+		abilities[2] = dmgAbilities[2];
+		dmgAbilities[2].setAbilityInfo("IPS", 1000);
+		dmgAbilities[3] = damageAbilityT(frameAbility4[frameID]);
+		abilities[3] = dmgAbilities[3];
+		dmgAbilities[3].setAbilityInfo("IPS", 250);
 		break;
 	case 3: //loki
-		CCAbility1 = CCAbilityT(frameAbility1[frameID]);
-		abilities[0] = CCAbility1;
-		buffAbility2 = buffAbilityT(frameAbility2[frameID]);
-		abilities[1] = buffAbility2;
-		CCAbility3 = CCAbilityT(frameAbility3[frameID]);
-		abilities[2] = CCAbility3;
-		debuffAbility4 = debuffAbilityT(frameAbility4[frameID]);
-		abilities[3] = debuffAbility4;
+		CCAbilities[0] = CCAbilityT(frameAbility1[frameID]);
+		abilities[0] = CCAbilities[0];
+		buffAbilities[1] = buffAbilityT(frameAbility2[frameID]);
+		abilities[1] = buffAbilities[1];
+		CCAbilities[2] = CCAbilityT(frameAbility3[frameID]);
+		abilities[2] = CCAbilities[2];
+		debuffAbilities[3] = debuffAbilityT(frameAbility4[frameID]);
+		abilities[3] = debuffAbilities[3];
 		break;
 	case 4: //mag
-		dmgAbility1 = damageAbilityT(frameAbility1[frameID]);
-		abilities[0] = dmgAbility1;
-		dmgAbility1.setAbilityInfo("magnetic", 300);
-		debuffAbility2 = debuffAbilityT(frameAbility2[frameID]);
-		abilities[1] = debuffAbility2;
-		otherAbility3 = otherAbilityT(frameAbility3[frameID]);
-		abilities[2] = otherAbility3;
-		dmgAbility4 = damageAbilityT(frameAbility4[frameID]);
-		abilities[3] = dmgAbility4;
-		dmgAbility4.setAbilityInfo("magnetic", 1500);
+		dmgAbilities[0] = damageAbilityT(frameAbility1[frameID]);
+		abilities[0] = dmgAbilities[0];
+		dmgAbilities[0].setAbilityInfo("magnetic", 300);
+		debuffAbilities[1] = debuffAbilityT(frameAbility2[frameID]);
+		abilities[1] = debuffAbilities[1];
+		otherAbilities[2] = otherAbilityT(frameAbility3[frameID]);
+		abilities[2] = otherAbilities[2];
+		dmgAbilities[3] = damageAbilityT(frameAbility4[frameID]);
+		abilities[3] = dmgAbilities[3];
+		dmgAbilities[3].setAbilityInfo("magnetic", 1500);
 		break;
 	case 5: //rhino
-		otherAbility1 = otherAbilityT(frameAbility1[frameID]);
-		abilities[0] = otherAbility1;
-		buffAbility2 = buffAbilityT(frameAbility2[frameID]);
-		abilities[1] = buffAbility2;
-		buffAbility3 = buffAbilityT(frameAbility3[frameID]);
-		abilities[2] = buffAbility3;
-		CCAbility4 = CCAbilityT(frameAbility4[frameID]);
-		abilities[3] = CCAbility4;
+		otherAbilities[0] = otherAbilityT(frameAbility1[frameID]);
+		abilities[0] = otherAbilities[0];
+		buffAbilities[1] = buffAbilityT(frameAbility2[frameID]);
+		abilities[1] = buffAbilities[1];
+		buffAbilities[2] = buffAbilityT(frameAbility3[frameID]);
+		abilities[2] = buffAbilities[2];
+		CCAbilities[3] = CCAbilityT(frameAbility4[frameID]);
+		abilities[3] = CCAbilities[3];
 		break;
 	case 6: //trin
-		debuffAbility1 = debuffAbilityT(frameAbility1[frameID]);
-		abilities[0] = debuffAbility1;
-		debuffAbility2 = debuffAbilityT(frameAbility2[frameID]);
-		abilities[1] = debuffAbility2;
-		buffAbility3 = buffAbilityT(frameAbility3[frameID]);
-		abilities[2] = buffAbility3;
-		buffAbility4 = buffAbilityT(frameAbility4[frameID]);
-		abilities[3] = buffAbility4;
+		debuffAbilities[0] = debuffAbilityT(frameAbility1[frameID]);
+		abilities[0] = debuffAbilities[0];
+		debuffAbilities[1] = debuffAbilityT(frameAbility2[frameID]);
+		abilities[1] = debuffAbilities[1];
+		buffAbilities[2] = buffAbilityT(frameAbility3[frameID]);
+		abilities[2] = buffAbilities[2];
+		buffAbilities[3] = buffAbilityT(frameAbility4[frameID]);
+		abilities[3] = buffAbilities[3];
 		break;
 	case 7: //volt
-		dmgAbility1 = damageAbilityT(frameAbility1[frameID]);
-		abilities[0] = dmgAbility1;
-		dmgAbility1.setAbilityInfo("electric", 200);
-		buffAbility2 = buffAbilityT(frameAbility2[frameID]);
-		abilities[1] = buffAbility2;
-		otherAbility3 = otherAbilityT(frameAbility3[frameID]);
-		abilities[2] = otherAbility3;
-		CCAbility4 = CCAbilityT(frameAbility4[frameID]);
-		abilities[3] = CCAbility4;
+		dmgAbilities[0] = damageAbilityT(frameAbility1[frameID]);
+		abilities[0] = dmgAbilities[0];
+		dmgAbilities[0].setAbilityInfo("electric", 200);
+		buffAbilities[1] = buffAbilityT(frameAbility2[frameID]);
+		abilities[1] = buffAbilities[1];
+		otherAbilities[2] = otherAbilityT(frameAbility3[frameID]);
+		abilities[2] = otherAbilities[2];
+		CCAbilities[3] = CCAbilityT(frameAbility4[frameID]);
+		abilities[3] = CCAbilities[3];
 		break;
 	}
 }
@@ -167,15 +170,16 @@ void FrameT::printStatus() {
 }
 
 AbilityT FrameT::getAbility(int which) {
-	
 	return abilities[which];
 }
 
 bool FrameT::drainEnergy(int cost) {
 	if (energyCur >= cost) {
 		energyCur -= cost;
+		
 		return true;
 	} else {
+		
 		return false;
 	}
 }
@@ -184,11 +188,43 @@ void FrameT::cast(int which){
 	//could this function call unique cast functions for the distinct ability types?
 	//i feel as if there should be a significantly easier way to do it
 	if (drainEnergy(getAbility(which).getCost())) {
-		getAbility(which).cast();
+		//string switch would be so convient here
+		if (getAbility(which).getType() == "dmg") {
+			dmgAbilities[which].cast();
+			return;
+		}
+		if (getAbility(which).getType() == "CC") {
+			CCAbilities[which].cast();
+			return;
+		}
+		if (getAbility(which).getType() == "buff") {
+			buffAbilities[which].cast();
+			return;
+		}
+		if (getAbility(which).getType() == "debuff") {
+			debuffAbilities[which].cast();
+			return;
+		}
+		if (getAbility(which).getType() == "other") {
+			otherAbilities[which].cast();
+			return;
+		}
+
+		abilities[which].cast();//debug func call, should never actually be called
+
 	} else {
 		//not enough energy error message	
 		cout << "Not enough energy" << endl;
 	}
+}
+
+void FrameT::printInfo() {
+	cout << getName() << " Max Health:" << healthMax << " Max Shields:" << shieldMax << " Max Energy:" << energyMax << " Sprint Speed: " << sprintSpeed << endl;
+	cout << abilities[0].getInfo() << endl;
+	cout << abilities[1].getInfo() << endl;
+	cout << abilities[2].getInfo() << endl;
+	cout << abilities[3].getInfo() << endl;
+
 }
 
 void FrameT::getHit(float damage) {

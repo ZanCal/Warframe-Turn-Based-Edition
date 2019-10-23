@@ -14,6 +14,7 @@ public:
 	AbilityT(string name);
 	AbilityT(string name, int cost);
 	AbilityT(string name, int cost, int turnCost);
+	string getInfo();
 	string getName();
 	int getCost();
 	int getTurnCost();

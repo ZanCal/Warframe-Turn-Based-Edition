@@ -28,6 +28,16 @@ void AbilityT::cast() {
 	cout << "This messages should not appear" << endl;
 }
 
+string AbilityT::getInfo() {
+	string info = "Ability: ";
+	info.append(abilityName);
+	info.append(" Type: ");
+	info.append(abilityType);
+	info.append(" Cost: ");
+	info.append(to_string(energyCost));
+	return info;
+} 
+
 damageAbilityT::damageAbilityT() {}
 
 damageAbilityT::damageAbilityT(AbilityT ability) {
